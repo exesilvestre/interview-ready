@@ -4,8 +4,10 @@
 # Given two strings, write a function to check if they are one edit (or zero edits) away.
 
 def isOneAway(str1: str, str2: str)-> bool:
+    
     if abs(len(str1) - len(str2)) > 1:
         return False
+    
     p1 = 0
     p2 = 0
     one_diff = False
@@ -15,20 +17,20 @@ def isOneAway(str1: str, str2: str)-> bool:
         if str1[p1] == str2[p2]:
             p1 += 1
             p2 += 1
+            continue
+
+        if one_diff:
+            return False
+        
+        if len(str1) == len(str2):
+            p1 += 1
+            p2 += 1
+            one_diff = True
+        elif len(str1) > len(str2):
+            p1 += 1
+            one_diff = True
         else:
-            if one_diff:
-                return False
-            if len(str1) > len(str2):
-                p1 += 1
-                one_diff = True
-
-            elif len(str1) < len(str2):
-                p2 += 1
-                one_diff = True
-
-            else:
-                one_diff = True
-                p1 += 1
-                p2 += 1    
+            p2 += 1
+            one_diff = True
 
     return True

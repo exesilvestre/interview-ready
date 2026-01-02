@@ -14,21 +14,42 @@
 
 
 from typing import Optional, Any
-from linkedList import LinkedList
 
 class Node:
     def __init__(self, value: Any):
         self.value = value
         self.next: Optional["Node"] = None
 
-def loopDetection(head: Node):
-    seen = set()
-    current = head
+# def loopDetection(head: Node):
+#     seen = set()
+#     current = head
 
-    while current:
-        if current in seen:
-            return current
-        seen.add(current)
-        current = current.next
+#     while current:
+#         if current in seen:
+#             return current
+#         seen.add(current)
+#         current = current.next
+    
+#     return None
+
+def loopDetection(head: Node):
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+        if slow == fast:
+            break
+    else:
+        return None
+    
+    slow = head
+    while slow != fast:
+        slow = slow.next
+        fast = fast.next
+    
+    return slow
 
     

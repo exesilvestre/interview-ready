@@ -9,7 +9,6 @@
 # ```
 
 from typing import Optional, Any
-from linkedList import LinkedList
 
 class Node:
     def __init__(self, value: Any):
@@ -17,24 +16,35 @@ class Node:
         self.next: Optional["Node"] = None
 
 def sumLists(list1: Node, list2: Node):
-    lst1 = LinkedList(list1)
-    lst2 = LinkedList(list2)
+    carry = 0
+    result_head = None
+    result_tail = None
 
-    arr1 = []
-    lst1.visit(lambda v: arr1.insert(0, v))
+    p1 = list1
+    p2 = list2
 
-    arr2 = []
-    lst2.visit(lambda v: arr2.insert(0, v))
+    while p1 or p2 or carry:
+        val1 = p1.value if p1 else 0
+        val2 = p2.value if p2 else 0
 
-    str1 = "".join(map(str, arr1))
-    str2 = "".join(map(str, arr2))
+        total = val1 + val2 + carry
+        carry = total // 10
+        digit = total % 10
 
-    total = int(str1) + int(str2)
+        new_node = Node(digit)
 
-    new_list = LinkedList()
-    for digit in reversed(str(total)):
-        new_list.push(int(digit))
+        if result_head is None:
+            result_head = result_tail = new_node
+        else:
+            result_tail.next = new_node
+            result_tail = new_node
 
-    return new_list.head
-    
+        if p1:
+            p1 = p1.next
+        if p2:
+            p2 = p2.next
+
+    return result_head
+
+
 

@@ -5,12 +5,11 @@
 # and that you are given the "true" length of the string.
 
 def URLify (s1 : str) -> str:
-    new_str = ''
-    for i in range(len(s1)):
-        if s1[i] == ' ':
+    new_str = ""
+    for i in s1:
+        if i == " ":
             new_str += "%20"
-            continue
-        
-        new_str += s1[i]
+        else:
+            new_str += i
     
     return new_str

@@ -7,18 +7,19 @@ def checkPermutations(s1: str, s2: str) ->bool:
     if len(s1) != len(s2):
         return False
 
+
     for i in range(len(s1)):
         if s1[i] in aux_dict:
-            aux_dict[s1[i]] += 1
+          aux_dict[s1[i]] += 1
         else:
-            aux_dict[s1[i]] = 1   
-
+            aux_dict[s1[i]] = 1
     
-    for j in range(len(s2)):
-        if s2[j] not in aux_dict or aux_dict[s2[j]] == 0:
+    for i in range(len(s2)):
+        if s2[i] not in aux_dict:
+            return False
+        elif aux_dict[s2[i]] == 0:
             return False
         else:
-            aux_dict[s2[j]] -= 1
-
+            aux_dict[s2[i]] -= 1
     
     return True

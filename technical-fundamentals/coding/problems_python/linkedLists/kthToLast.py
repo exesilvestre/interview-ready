@@ -22,11 +22,9 @@ def kthToLast(head: Node, k: int):
         if not advanced:
             return None
         advanced = advanced.next
-
     
     while advanced:
-        orignal = original.next
+        original = original.next
         advanced = advanced.next
-
+    
     return original
-

@@ -6,8 +6,9 @@
 def is_unique(str: str)-> bool:
     chars = set()
 
-    for i in range(len(str)):
-        if str[i] in chars:
+    for i in str:
+        if i in chars:
             return False
-        chars.add(str[i])    
+        chars.add(i)
+
     return True

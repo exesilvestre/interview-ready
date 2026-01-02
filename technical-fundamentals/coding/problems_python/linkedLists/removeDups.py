@@ -18,16 +18,12 @@ def remove_dups(head: Optional[Node]) -> Optional[Node]:
         return None
     p = head
     elements = set()
-    elements.add(head.value)
-    while(p):
-        next_node  = p.next
-        if not next_node :
-            break
+    elements.add(p.value)
+    while p.next:
+        next_node = p.next
         if next_node.value in elements:
-            p.next = next_node.next
-        else:
-            elements.add(next_node.value)
-            p = p.next
+            p.next  = p.next.next
+            continue
+        p = p.next
     
     return head
-
