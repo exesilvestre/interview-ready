@@ -14,16 +14,16 @@ class Node:
 def palindrome(head: Node):
     slow = head
     fast = head
-    stack= []
+    stack = []
 
     while fast and fast.next:
         stack.append(slow.value)
         slow = slow.next
         fast = fast.next.next
-    
+
     if fast:
         slow = slow.next
-    
+
     while slow:
         if stack.pop() != slow.value:
             return False

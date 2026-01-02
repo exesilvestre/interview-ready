@@ -21,32 +21,30 @@ def partition(head: Node, x: int):
     if head is None:
         return None
     
-    left_tail = left_head = None
-    right_tail = right_head = None
-
+    left_head = left_tail = None
+    right_head = right_tail = None
     current = head
+     
     while current:
         next_node = current.next
         current.next = None
         if current.value < x:
-            if left_head is None:
+            if not left_head:
                 left_head = left_tail = current
             else:
                 left_tail.next = current
                 left_tail = current
-                
         else:
-            if right_head is None:
+            if not right_head:
                 right_head = right_tail = current
             else:
                 right_tail.next = current
                 right_tail = current
-                
             
         current = next_node
     
-    if left_tail:
+    if left_head:
         left_tail.next = right_head
         return left_head
-    else:
-        return right_head
+    
+    return right_head

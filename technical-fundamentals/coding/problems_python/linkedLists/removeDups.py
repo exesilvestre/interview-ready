@@ -16,14 +16,15 @@ class Node:
 def remove_dups(head: Optional[Node]) -> Optional[Node]:
     if not head:
         return None
-    p = head
-    elements = set()
-    elements.add(p.value)
-    while p.next:
-        next_node = p.next
-        if next_node.value in elements:
-            p.next  = p.next.next
-            continue
-        p = p.next
-    
+    seen = set()
+    seen.add(head.value)
+
+    current = head
+    while current.next:
+        if current.next.value in seen:
+            current.next = current.next.next 
+        else:
+            seen.add(current.next.value)
+            current = current.next
+
     return head

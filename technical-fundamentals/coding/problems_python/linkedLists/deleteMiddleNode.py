@@ -9,7 +9,6 @@
 # ```
 
 from typing import Optional, Any
-from linkedList import LinkedList
 
 class Node:
     def __init__(self, value: Any):
@@ -17,21 +16,26 @@ class Node:
         self.next: Optional["Node"] = None
 
 def deleteMiddleNode(head: Node, position: int):
-    if head is None or position <= 1:
+    if not head or position < 1:
+        return head
+    
+    if not head.next or not head.next.next:
         return head
     
     current = head
-    index = 1
+    index = 0
 
     while current.next and index < position - 1:
         current = current.next
         index += 1
 
-    if current.next is None or current.next.next is None:
-        return head
+    if not current.next:
+         return head
     
     current.next = current.next.next
     return head
+    
+    
 
     
-        
+    

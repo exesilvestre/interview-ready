@@ -15,16 +15,17 @@ def kthToLast(head: Node, k: int):
     if not head or k <= 0:
         return None
     
-    original = head
+    real = head
     advanced = head
 
-    for i in range(k):
+    for _ in range(k):
         if not advanced:
             return None
+        
         advanced = advanced.next
     
     while advanced:
-        original = original.next
+        real = real.next
         advanced = advanced.next
     
-    return original
+    return real

@@ -11,7 +11,7 @@ class Node:
         self.next = next
 
 def intersection(list1: Optional[Node], list2: Optional[Node]):
-    seen =  set()
+    seen = set()
     p1 = list1
     p2 = list2
 

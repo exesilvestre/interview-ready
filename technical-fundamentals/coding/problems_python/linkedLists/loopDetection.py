@@ -37,11 +37,11 @@ def loopDetection(head: Node):
     fast = head
 
     while fast and fast.next:
-        slow = slow.next
         fast = fast.next.next
-
+        slow = slow.next
         if slow == fast:
             break
+
     else:
         return None
     
@@ -51,5 +51,3 @@ def loopDetection(head: Node):
         fast = fast.next
     
     return slow
-
-    
