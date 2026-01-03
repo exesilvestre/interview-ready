@@ -17,8 +17,7 @@ class Node:
 
 def sumLists(list1: Node, list2: Node):
     carry = 0
-    result_head = None
-    result_tail = None
+    result_head = result_tail = None
 
     p1 = list1
     p2 = list2
@@ -28,23 +27,22 @@ def sumLists(list1: Node, list2: Node):
         val2 = p2.value if p2 else 0
 
         total = val1 + val2 + carry
-        carry = total // 10
         digit = total % 10
+        carry = total // 10
 
         new_node = Node(digit)
 
-        if result_head is None:
+        if not result_head:
             result_head = result_tail = new_node
         else:
             result_tail.next = new_node
             result_tail = new_node
-
+        
         if p1:
             p1 = p1.next
         if p2:
             p2 = p2.next
-
+    
     return result_head
-
 
 
