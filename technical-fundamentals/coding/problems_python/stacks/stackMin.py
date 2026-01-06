@@ -12,25 +12,29 @@ class StackMin:
         self.mins = []
 
 
+
     def push(self, value):
-        self.array.append(value)
-        if not self.mins or value <= self.mins[-1]:
+        if not self.mins or self.mins[-1] >= value:
             self.mins.append(value)
-        return value
+        self.array.append(value)
+        
 
     def pop(self):
-        if not self.mins:
+        if not self.array:
             return None
-        pop = self.array.pop()
-        if pop == self.mins[-1]:
+        value = self.array.pop()
+        if value == self.mins[-1]:
             self.mins.pop()
-        return pop
+        return value
+        
 
 
     def min(self):
         if not self.mins:
             return None
         return self.mins[-1]
+
+
 
 
 
