@@ -7,19 +7,19 @@
 
 def stringCompression (s: str) -> str:
     if len(s) == 0:
-        return s
-    compressed = ""
-    counter = 1
-    for i in range(1, len(s)):
-        if s[i] != s[i - 1]:
-            compressed += s[i - 1] + str(counter)
-            counter = 0
-        counter += 1
+          return ""
+    current = s[0]
+    count_current = 0
+    new_str = ""
+    for i in s:
+        if i == current:
+            count_current += 1 
+            continue
+        else:
+            new_str += (current + str(count_current))
+            current = i
+            count_current = 1
 
-    
-    compressed += s[-1] + str(counter)
+    new_str += (current + str(count_current))
 
-    if len(compressed) >= len(s):
-        return s
-
-    return compressed
+    return new_str if len(new_str) < len(s) else s

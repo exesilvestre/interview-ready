@@ -3,25 +3,24 @@
 
 
 def zeroMatrix (matrix: list[list[int]]) ->list[list[int]]:
+    if not matrix or not matrix[0]:
+        return matrix
     rows = set()
     cols = set()
 
-    rows_len = len(matrix)
-    cols_len = len(matrix[0])
+    for row in range(len(matrix)):
+        for col in range(len(matrix[row])):
+            if matrix[row][col] == 0:
+                rows.add(row)
+                cols.add(col)
+    
+    for row in rows:
+        for col in range(len(matrix[0])):
+            matrix[row][col] = 0
+    
+    for col in cols:
+        for row in range(len(matrix)):
+            matrix[row][col] = 0
 
-    for i in range(rows_len):
-        for j in range(cols_len):
-            if matrix[i][j] == 0:
-                rows.add(i)
-                cols.add(j)
-        
-    
-    for r in rows:
-        matrix[r] = [0] * cols_len
-    
-    for c in cols:
-        for i in range(rows_len):
-            matrix[i][c] = 0
-
-    
     return matrix
+    

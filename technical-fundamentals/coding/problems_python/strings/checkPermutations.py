@@ -3,23 +3,21 @@
 # Given two strings, write a method to decide if one is a permutation of the other.
 
 def checkPermutations(s1: str, s2: str) ->bool:
-    aux_dict = {}
     if len(s1) != len(s2):
         return False
+    aux_s1 = {}
 
-
-    for i in range(len(s1)):
-        if s1[i] in aux_dict:
-          aux_dict[s1[i]] += 1
+    for i in s1:
+        if i not in aux_s1:
+            aux_s1[i] = 1
         else:
-            aux_dict[s1[i]] = 1
+            aux_s1[i] += 1
     
-    for i in range(len(s2)):
-        if s2[i] not in aux_dict:
+    for j in s2:
+        if j not in aux_s1:
             return False
-        elif aux_dict[s2[i]] == 0:
+        if aux_s1[j] == 0:
             return False
-        else:
-            aux_dict[s2[i]] -= 1
+        aux_s1[j] -= 1
     
     return True

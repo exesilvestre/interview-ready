@@ -7,7 +7,7 @@
 [4, 5, 6]
 [7, 8, 9]
 
-[1, 4., 7]
+[1, 4, 7]
 [2, 5, 8]
 [3, 6, 9]
 
@@ -19,14 +19,13 @@
 
 def rotateMatrix (matrix: list[list[int]]) -> list[list[int]]:
     n = len(matrix)
-
-    for i in range(n):
-        for j in range(i, n):
-            temp = matrix[i][j]
-            matrix[i][j] = matrix[j][i]
-            matrix[j][i] = temp
-        
-    for i in range(n):
-        matrix[i].reverse()
+    for row in range(n):
+        for col in range(row + 1, n):
+            value = matrix[row][col]
+            matrix[row][col] =  matrix[col][row]
+            matrix[col][row] = value
+    
+    for row in range(n):
+        matrix[row].reverse()
     
     return matrix

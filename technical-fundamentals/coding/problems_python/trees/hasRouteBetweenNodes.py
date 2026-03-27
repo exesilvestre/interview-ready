@@ -13,7 +13,6 @@ def has_route_between_nodes(start: GraphNode, end: GraphNode) -> bool:
 
     return dfs(start, end, visited)
 
-
 def dfs(start, end, visited):
     if start == end:
         return True
@@ -22,13 +21,10 @@ def dfs(start, end, visited):
         return False
     else:
         visited.add(start)
-    for i in range(len(start.neighbors)):
 
-        if start.neighbors[i]:
-             if dfs(start.neighbors[i], end, visited):
-                return True
-
-
-
-
-
+    for n in start.neighbors:
+        if dfs(n, end, visited):
+            return True
+    
+    return False
+    

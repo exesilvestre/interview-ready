@@ -9,29 +9,23 @@
 # ```
 
 def palindromePermutation (str: str) -> bool:
-    
     aux_dict = {}
-    odd = False
-    
-    for i in range(len(str)):
-        if str[i] == " ":
+    for i in str:
+        if i == " ":
             continue
-        c = str[i].lower()
-        if c in aux_dict:
-            aux_dict[c] += 1
+        i = i.lower()
+        if i in aux_dict:
+            aux_dict[i] +=1
+        
         else:
-            aux_dict[c] = 1
-
-    for i in aux_dict.values():
-        if i % 2 != 0:
-            if odd:
+            aux_dict[i] = 1
+    
+    one_odd = False
+    for value in aux_dict.values():
+        if (value % 2) != 0:
+            if one_odd:
                 return False
-            odd = True
+            one_odd = True
     
     return True
-        
-        
-
-
-    
 

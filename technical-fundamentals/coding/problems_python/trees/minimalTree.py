@@ -29,7 +29,20 @@ def minimalTree(sortedArray: List):
     pivot_index = len(sortedArray) // 2
     pivot = sortedArray[pivot_index]
 
-    left_side = sortedArray[0:pivot_index]
-    right_side = sortedArray[pivot_index  + 1::]
+    left = minimalTree(sortedArray[:pivot_index])
+    right = minimalTree(sortedArray[pivot_index + 1:])
+    
+    return TreeNode(pivot, left, right)
 
-    return TreeNode(pivot, minimalTree(left_side), minimalTree(right_side))
+"""
+[1,2,3,4,5,6,7,8]
+1 pivot = 5
+2 pivot = 3
+3 pivot = 2
+4 pivot = 1
+5 return None
+
+
+
+
+"""

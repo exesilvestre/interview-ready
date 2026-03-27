@@ -4,11 +4,11 @@
 # What if you cannot use additional data structures?
 
 def is_unique(str: str)-> bool:
-    chars = set()
+    aux_dict = set()
 
     for i in str:
-        if i in chars:
+        if i in aux_dict:
             return False
-        chars.add(i)
-
+        aux_dict.add(i)
+    
     return True

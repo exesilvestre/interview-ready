@@ -17,20 +17,21 @@ class TreeNode:
         self.left = left
         self.right = right
 
-    
-def checkBalanced( tree ):
+
+def checkBalanced(tree):
     if not tree:
         return True
     
-    is_balanced = abs(height(tree.left) - height(tree.right)) <= 0
+    is_balanced = abs(height(tree.left) - height(tree.right)) <= 1
     children_balanced = checkBalanced(tree.left) and checkBalanced(tree.right)
-    
+
     return is_balanced and children_balanced
 
 
 def height(node):
-    
     if not node:
         return 0
-    
     return max(height(node.left), height(node.right)) + 1
+
+
+

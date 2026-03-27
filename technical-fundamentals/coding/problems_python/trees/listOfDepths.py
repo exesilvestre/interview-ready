@@ -20,10 +20,10 @@ class Node:
 
 def listOfDepths(root):
     if not root:
-        return None
+        return []
     
-    result = []
     queue = [root]
+    result = []
 
     while queue:
         head = None
@@ -31,19 +31,18 @@ def listOfDepths(root):
         for i in range(len(queue)):
             curr = queue.pop(0)
             new_node = Node(curr.value)
-            if head is None:
+            if not head:
                 head = tail = new_node
+            
             else:
                 tail.next = new_node
                 tail = new_node
             
             if curr.left:
                 queue.append(curr.left)
+            
             if curr.right:
                 queue.append(curr.right)
         
         result.append(head)
-    
     return result
-
-
