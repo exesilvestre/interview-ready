@@ -18,13 +18,12 @@ def firstCommonAncestor(root, p, q):
     
     if root == p or root == q:
         return root
-
+    
     left = firstCommonAncestor(root.left, p, q)
     right = firstCommonAncestor(root.right, p, q)
-
     if left and right:
         return root
-
+    
     return left or right
 
 """

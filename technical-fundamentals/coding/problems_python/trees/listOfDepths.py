@@ -23,26 +23,27 @@ def listOfDepths(root):
         return []
     
     queue = [root]
-    result = []
+    results = []
 
     while queue:
         head = None
         tail = None
         for i in range(len(queue)):
             curr = queue.pop(0)
-            new_node = Node(curr.value)
+            node = Node(curr.value)
             if not head:
-                head = tail = new_node
-            
+                tail = head = node
             else:
-                tail.next = new_node
-                tail = new_node
+                tail.next = node
+                tail = node
             
+        
             if curr.left:
                 queue.append(curr.left)
-            
             if curr.right:
                 queue.append(curr.right)
-        
-        result.append(head)
-    return result
+
+        results.append(head)
+    
+    return results
+

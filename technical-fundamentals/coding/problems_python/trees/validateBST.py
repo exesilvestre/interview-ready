@@ -15,15 +15,13 @@ def validateBST(root):
     stack = [(root, float('-inf'), float('inf'))]
 
     while stack:
-        curr, min_val, max_val = stack.pop()
-        
-        if not (min_val < curr.value < max_val):
+        curr, min_value, max_value = stack.pop(0)
+        if not (min_value < curr.value < max_value):
             return False
         
         if curr.left:
-            stack.append((curr.left, min_val, curr.value))
-
+            stack.append((curr.left, min_value, curr.value))
         if curr.right:
-            stack.append((curr.right, curr.value, max_val))
+            stack.append((curr.right, curr.value, max_value))
         
     return True

@@ -12,10 +12,13 @@ class TreeNode:
 
 class Tree:
     def bfs(self, node: Optional[TreeNode], visit: Callable[[TreeNode], None]):
+
         if not node:
-            return None
-        
+            return []
         queue = [node]
+
+
+
         while queue:
             curr = queue.pop(0)
             visit(curr)
@@ -24,16 +27,23 @@ class Tree:
             
             if curr.right:
                 queue.append(curr.right)
-        
+            
+
+
+
+
 
 
 
 
     def dfs(self, node: Optional[TreeNode], visit: Callable[[TreeNode], None]):
+
         if not node:
             return None
         
         visit(node)
-        self.dfs(node.left, visit)
-        self.dfs(node.right, visit)
-        
+        if node.left:
+            self.dfs(node.left, visit)
+
+        if node.right:
+            self.dfs(node.right, visit)

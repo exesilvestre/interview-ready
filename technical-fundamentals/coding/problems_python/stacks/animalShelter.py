@@ -21,9 +21,9 @@ class Animal:
 
 class AnimalShelter():
     def __init__(self):
-        self.dogs: list[Animal] = []
-        self.cats: list[Animal] = []
-        self.all: list[Animal] = []
+            self.dogs: list[Animal] = []
+            self.cats: list[Animal] = []
+            self.all: list[Animal] = [] 
 
     def enqueue(self, type: AnimalType):
         new_animal = Animal(type)
@@ -36,34 +36,32 @@ class AnimalShelter():
     def dequeueAny(self):
         if not self.all:
             return None
-        
-        anim = self.all.pop()
-
+      
+        anim = self.all.pop()   
         if anim.type == "dog":
             self.dequeueDog()
         else:
             self.dequeueCat()
-        return anim
-
+        return anim   
     def dequeueDog(self):
         if not self.dogs:
             return None
         animal = self.dogs.pop()
         for i, a in enumerate(self.all):
             if a.type == "dog":
-                self.all.pop(i)
+                self.all.pop(i) 
                 break
         return animal
     
     def dequeueCat(self):
         if not self.cats:
             return None
-        animal = self.cats.pop(0)
-
+        animal = self.cats.pop(0)   
         for i, a in enumerate(self.all):
             if a.type == "cat":
                 self.all.pop(i)
                 break
-        
+      
         return animal
+
     

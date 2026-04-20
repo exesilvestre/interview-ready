@@ -12,15 +12,12 @@ class MyQueue:
     def dequeue(self):
         if self.isEmpty():
             return None
-
         if not self.left:
             self.moveLeft()
+        return self.left.pop()
 
-        value = self.left.pop()
-        return value
 
     def peek(self):
-
         if self.isEmpty():
             return None
         
@@ -31,7 +28,7 @@ class MyQueue:
 
   
     def isEmpty(self):
-        return len(self.right) == 0 and len(self.left) == 0
+        return not self.right and not self.left
 
     def moveLeft(self):
         while self.right:

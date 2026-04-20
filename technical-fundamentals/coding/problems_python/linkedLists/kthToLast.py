@@ -12,20 +12,20 @@ class Node:
 
 
 def kthToLast(head: Node, k: int):
-    if not head or k <= 0:
+    if not head or  k <= 0:
         return None
-    
-    real = head
+    normal = head
     advanced = head
+
 
     for _ in range(k):
         if not advanced:
             return None
-        
         advanced = advanced.next
     
     while advanced:
-        real = real.next
+        normal = normal.next
         advanced = advanced.next
     
-    return real
+    return normal
+        

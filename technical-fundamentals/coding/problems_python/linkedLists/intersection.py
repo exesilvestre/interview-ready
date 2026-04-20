@@ -15,8 +15,9 @@ def intersection(list1: Optional[Node], list2: Optional[Node]):
     p1 = list1
     p2 = list2
 
-    while p1:
-        seen.add(p1)
+    while p1.next:
+        if p1 not in seen:
+            seen.add(p1)
         p1 = p1.next
     
     while p2:
@@ -25,5 +26,3 @@ def intersection(list1: Optional[Node], list2: Optional[Node]):
         p2 = p2.next
     
     return None
-
-    

@@ -18,24 +18,19 @@ class Node:
 def deleteMiddleNode(head: Node, position: int):
     if not head or position < 1:
         return head
-    
-    if not head.next or not head.next.next:
-        return head
-    
+
+
     current = head
     index = 0
 
     while current.next and index < position - 1:
         current = current.next
         index += 1
-
-    if not current.next:
-         return head
     
-    current.next = current.next.next
+    
+    if current.next:
+        current.next = current.next.next
+
     return head
-    
-    
 
-    
     

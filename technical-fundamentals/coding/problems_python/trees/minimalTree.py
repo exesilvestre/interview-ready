@@ -23,16 +23,18 @@ class TreeNode:
         self.right = right
 
 def minimalTree(sortedArray: List):
-    if len(sortedArray) == 0:
+    if not sortedArray:
         return None
     
-    pivot_index = len(sortedArray) // 2
-    pivot = sortedArray[pivot_index]
+    pivot = len(sortedArray) // 2
+    curr = sortedArray[pivot]
 
-    left = minimalTree(sortedArray[:pivot_index])
-    right = minimalTree(sortedArray[pivot_index + 1:])
-    
-    return TreeNode(pivot, left, right)
+    left = minimalTree(sortedArray[:pivot])
+    right = minimalTree(sortedArray[pivot +1:])
+
+    return TreeNode(curr, left, right)
+
+  
 
 """
 [1,2,3,4,5,6,7,8]

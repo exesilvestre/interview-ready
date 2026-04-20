@@ -15,6 +15,8 @@ class StackOfPlates:
 
     
     def push(self, value: int):
+        if self.capacity <= 0:
+            return None
         if not self.stacks or len(self.stacks[-1]) == self.capacity:
             self.stacks.append([])
         self.stacks[-1].append(value)
@@ -24,7 +26,10 @@ class StackOfPlates:
         if not self.stacks:
             return None
         value = self.stacks[-1].pop()
+
         if len(self.stacks[-1]) == 0:
             self.stacks.pop()
-
+        
         return value
+        
+            

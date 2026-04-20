@@ -20,14 +20,13 @@ def palindrome(head: Node):
         stack.append(slow.value)
         slow = slow.next
         fast = fast.next.next
-
+    
     if fast:
         slow = slow.next
-
+    
     while slow:
-        if stack.pop() != slow.value:
+        if stack.pop() !=  slow.value:
             return False
         slow = slow.next
     
     return True
-    

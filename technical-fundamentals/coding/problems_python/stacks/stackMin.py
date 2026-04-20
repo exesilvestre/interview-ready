@@ -14,7 +14,7 @@ class StackMin:
 
 
     def push(self, value):
-        if not self.mins or self.mins[-1] >= value:
+        if not self.mins or value < self.mins[-1]:
             self.mins.append(value)
         self.array.append(value)
         
@@ -25,12 +25,12 @@ class StackMin:
         value = self.array.pop()
         if value == self.mins[-1]:
             self.mins.pop()
-        return value
         
+        return value
 
 
     def min(self):
-        if not self.mins:
+        if len(self.mins) == 0:
             return None
         return self.mins[-1]
 
