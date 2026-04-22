@@ -5,10 +5,8 @@
 
 def is_unique(str: str)-> bool:
     aux_dict = set()
-
-    for i in str:
-        if i in aux_dict:
+    for s in str:
+        if s in aux_dict:
             return False
-        aux_dict.add(i)
-    
+        aux_dict.add(s)
     return True

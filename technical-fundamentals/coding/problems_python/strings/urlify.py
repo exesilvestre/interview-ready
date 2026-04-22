@@ -6,11 +6,10 @@
 
 def URLify (s1 : str) -> str:
     new_str = ""
-
-    for i in s1:
-        if i == " ":
+    for s in s1:
+        if s == " ":
             new_str += "%20"
-            continue
-        new_str += i
-
+        else:
+            new_str += s
+    
     return new_str
