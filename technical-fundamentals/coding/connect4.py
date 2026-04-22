@@ -100,44 +100,45 @@ class Connect4:
     
     
     def check_win(self, row_index, col_index, current_player):
-        row = self.board[row_index]
-        col = [self.board[i][col_index] for i in range(self.height)]
-        diag_inc = self.make_diag_inc(row_index, col_index) 
-        diag_dec = self.make_diag_dec(row_index, col_index)
-
-        lines = row, col, diag_inc, diag_dec
-
-        return any(current_player * 4 in ''.join(line) for line in lines)
-    
-
-
-    def make_diag_inc(self, row_index, col_index):
-        diag_inc = []
-        r, c = row_index, col_index
-        while r < self.height - 1 and c > 0:
-            r += 1
-            c -= 1
-
-        while r > 0 and c < self.width:
-            diag_inc.append(self.board[r][c])
-            r -= 1
-            c += 1
-
-        return diag_inc
-    
-    def make_diag_dec(self, row_index, col_index):
+        row = []
+        for c in range(col_index - 3, col_index + 4):
+            if 0 <= col_index < self.width:
+                row.append(self.board[row_index][c])
+        
+        if current_player * 4 in ''.join(row):
+            return True
+        
+        col = []
+        for r in range(row_index - 3, row_index + 4):
+            if 0 <= r < self.height:
+                col.append(self.board[r][col_index])
+        
+        if current_player * 4 in ''.join(col):
+            return True
+        
         diag_dec = []
-        r, c = row_index, col_index
-        while r > 0 and c > 0:
-            r -= 1
-            c -= 1
+        for i in range(-3, 4):
+            r = row_index + i
+            c = col_index + 1
+            if 0 <= r < self.height and 0 <= col_index < self.width:
+                diag_dec.append(self.board[r][c])
+            
         
-        while r < self.height and c < self.width:
-            diag_dec.append(self.board[r][c])
-            r += 1
-            c += 1
+        if current_player * 4 in ''.join(diag_dec):
+            return True
         
-        return diag_dec
+        diag_inc = []
+        for i in range(-3, 4):
+            r = row_index + i
+            c = col_index - i
+            if 0 <= r < self.height and 0 <= col_index < self.width:
+                diag_inc.append(self.board[r][c])
+        
+        if current_player * 4 in ''.join(diag_inc):
+            return True
+    
+        return False
+
     
 
 t = TestConnect4()
